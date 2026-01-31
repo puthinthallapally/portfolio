@@ -1,1 +1,233 @@
-# portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Puthin | Creative Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
+}
+
+body{
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ===== HERO ===== */
+.hero{
+  height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.8)),
+    url("hero.jpg") center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  animation:zoomHero 20s infinite alternate;
+}
+
+@keyframes zoomHero{
+  from{background-size:100%;}
+  to{background-size:110%;}
+}
+
+.hero h1{
+  font-size:64px;
+  font-weight:800;
+  letter-spacing:3px;
+  animation:fadeDown 1.5s ease;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:20px;
+  opacity:.85;
+  animation:fadeUp 1.8s ease;
+}
+
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-50px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(50px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  padding:80px 10%;
+}
+
+.section h2{
+  font-size:36px;
+  margin-bottom:30px;
+  position:relative;
+}
+
+.section h2::after{
+  content:"";
+  width:80px;
+  height:3px;
+  background:#fff;
+  position:absolute;
+  left:0;
+  bottom:-10px;
+}
+
+/* ===== ABOUT ===== */
+.about p{
+  max-width:800px;
+  font-size:18px;
+  line-height:1.8;
+  opacity:.9;
+}
+
+/* ===== SKILLS ===== */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+}
+
+.skill-btn{
+  padding:20px;
+  border:1px solid rgba(255,255,255,.3);
+  text-align:center;
+  cursor:pointer;
+  transition:.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.skill-btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,.15);
+  transition:.4s;
+}
+
+.skill-btn:hover::before{
+  left:0;
+}
+
+.skill-btn:hover{
+  transform:scale(1.08);
+}
+
+/* ===== PORTFOLIO ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.gallery img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.gallery img:hover{
+  transform:scale(1.15);
+}
+
+/* ===== CONTACT ===== */
+.contact p{
+  font-size:18px;
+  margin:10px 0;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>PUTHIN THALLAPALLY</h1>
+  <p>Photographer / Cinematographer & Web / Creative Designer</p>
+</section>
+
+<!-- ABOUT -->
+<section class="section about reveal">
+  <h2>About Me</h2>
+  <p>
+    I’m Puthin — a creative professional blending visual storytelling with modern web design.
+    Skilled in photography, cinematography, web development, and video editing,
+    I focus on creating clean, premium designs and impactful visuals that feel alive and memorable.
+  </p>
+</section>
+
+<!-- SKILLS -->
+<section class="section reveal">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill-btn" onclick="openSkill('photography')">Photography</div>
+    <div class="skill-btn" onclick="openSkill('photo-editing')">Photo Editing</div>
+    <div class="skill-btn" onclick="openSkill('web-design')">Web Designing</div>
+    <div class="skill-btn" onclick="openSkill('video-editing')">Video Editing</div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section reveal">
+  <h2>Portfolio</h2>
+  <div class="gallery">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+    <img src="img3.jpg">
+    <img src="img4.jpg">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact reveal">
+  <h2>Contact</h2>
+  <p>📞 8125044735 / 9010744735</p>
+  <p>📧 puthinthallapally@gmail.com</p>
+  <p>📸 Instagram: @puthin_thallapally</p>
+</section>
+
+<script>
+/* scroll reveal */
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100){
+      el.classList.add("active");
+    }
+  });
+});
+
+/* skill pages */
+function openSkill(skill){
+  window.location.href = skill + ".html";
+}
+</script>
+
+</body>
+</html>
